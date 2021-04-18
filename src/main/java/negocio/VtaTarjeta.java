@@ -11,12 +11,12 @@ public class VtaTarjeta extends Venta{
     }
 
     @Override
-    public double precioVenta(Prenda prenda) {
-        return prenda.precio() + this.recargo(prenda.precio());
+    public double recargo(double valorPrenda) {
+        return cuotas * coeficienteFijo + 0.01 * valorPrenda;
     }
 
     @Override
-    public double recargo(double valorPrenda) {
-        return cuotas * coeficienteFijo + 0.01 * valorPrenda;
+    public double precioVenta() {
+        return super.sumatoriaPrecioPrendas() + this.recargo(coeficienteFijo);
     }
 }
